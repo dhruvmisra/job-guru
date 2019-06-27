@@ -1,0 +1,60 @@
+.heading {
+    z-index: 1;
+}
+.heading > h1 > span {
+    color: var(--primary);
+}
+
+/* Jumbotron */
+.jumbotron {
+    padding-bottom: 20em;
+}
+
+/* About */
+.about-img-section {
+    position: relative;
+    margin-top: -5em;
+    margin-bottom: -20em;
+    z-index: 1;
+}
+
+.about {
+    padding-top: 100px;
+    padding-bottom: 300px;
+}
+.about:nth-child(even) {
+    background-color: var(--dark);
+    color: white;
+}
+.about-img {
+    width: 280px;
+    height: 340px;
+    background-color: rgb(224, 246, 255)
+}
+.about-text, .about-name {
+    padding-left: 20px;
+}
+
+
+/* Main About */
+.about-img-section.main {
+    position: relative;
+    margin-top: -15em;
+    margin-bottom: -29em;
+    z-index: 1;
+}
+.about.main {
+    background-color: white;
+    color: black;
+}
+
+.about-img.main {
+    display: block;
+    width: 400px;
+    height: 450px;
+}
+.about-name.main {
+    color: white;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
