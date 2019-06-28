@@ -14,7 +14,7 @@
       <form class="mx-auto col-sm-5">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name">
+          <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name" required>
         </div>
 
         <div class="form-group" :class="{invalid: ($v.email.$error) && ($v.email.$model!='')}">
@@ -39,9 +39,15 @@
           <small v-if="($v.password.$error) && ($v.password.$model!='')">Password must be atleast {{ $v.password.$params.minLen.min }} characters long</small>
         </div>
         
-        <div class="form-group">
-          <label for="password">Confirm Password</label>
-          <input type="password" class="form-control" id="password" v-model="cpassword" placeholder="Enter same password">
+        <div class="form-group" :class="{invalid: ($v.confirmPass.$error) && ($v.confirmPass.$model!='')}">
+          <label for="confirmPass">Confirm Password</label>
+          <input type="password" 
+                  class="form-control" 
+                  id="confirmPass" 
+                  @blur="$v.confirmPass.$touch()"
+                  v-model="confirmPass" 
+                  placeholder="Enter password again">
+          <small v-if="($v.confirmPass.$error) && ($v.confirmPass.$model!='')">Passwords do not match</small>
         </div>
         <div class="form-group" :class="{invalid: ($v.contact.$error) && ($v.contact.$model!='')}">
           <label for="number">Contact Number</label>
@@ -54,11 +60,16 @@
           <small v-if="($v.contact.$error) && ($v.contact.$model!='')">Please enter a valid Contact number</small>
 
         </div>
-        <div class="form-check my-4">
-          <input type="checkbox" class="form-check-input" id="terms">
-          <label class="form-check-label" for="terms">Terms and conditions</label>
+        <div class="custom-control custom-checkbox my-4">
+          <input type="checkbox" 
+                  v-model="terms" 
+                  class="custom-control-input" 
+                  id="terms">
+          <label class="custom-control-label" for="terms">Accept <a href="">Terms and conditions</a></label>
+          <br>
+          <small v-if="!terms" style="color: red">Please accept terms and conditions</small>
         </div>
-        <button @click.prevent="signin" type="button" class="btn btn-primary">Sign Up</button>
+        <button @click.prevent="register" :disabled="$v.$invalid" type="submit" class="btn btn-primary mx-auto">Sign Up</button>
       </form>
       
       <router-link to="/signin" tag="a" class="link mx-auto">Already have an account?</router-link>
@@ -68,7 +79,7 @@
 
 <script>
   import firebase from '../firebase';
-  import {required, email, numeric, maxLength, minLength} from 'vuelidate/lib/validators';
+  import {required, email, numeric, maxLength, minLength, sameAs} from 'vuelidate/lib/validators';
 
   export default {
     data() {
@@ -76,8 +87,9 @@
         name: '',
         email: '',
         password: '',
-        cpassword: '',
-        contact: null
+        confirmPass: '',
+        contact: null,
+        terms: false
       }
     },
     validations: {
@@ -95,6 +107,9 @@
         required,
         minLen: minLength(6),
       },
+      confirmPass: {
+        sameAs: sameAs('password')
+      }
     },
 
     methods: {
@@ -102,7 +117,7 @@
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then(user => {
             console.log(user.user);
-            this.$router.push('/');
+            this.$router.go({path: this.$router.path});
           },
           err => {
             alert(err.message);

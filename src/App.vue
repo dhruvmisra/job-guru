@@ -42,6 +42,7 @@
 
 <style scoped>
   @import "./css/bootstrap.min.css";
+  @import "./css/bootstrap-custom.css";
   /* @import "https://unpkg.com/aos@next/dist/aos.css"; */
   /* @import "./slick/slick.css";
   @import "./slick/slick-theme.css"; */

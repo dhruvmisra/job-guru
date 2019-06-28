@@ -59,7 +59,7 @@
         firebase.auth().signInWithEmailAndPassword(this.email, this.password)
           .then(user => {
             console.log(user.user);
-            this.$router.push('/');
+            this.$router.go({path: this.$router.path});
           },
           err => {
             alert(err.message);
