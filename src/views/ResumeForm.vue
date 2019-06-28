@@ -229,7 +229,8 @@
   </div>
 </template>
 
-<script>
+<script>  
+  import axios from 'axios'; 
   import firebase from '../firebase';
   
   export default {
@@ -287,6 +288,14 @@
           achievements: []
         }
       }
+    },
+
+    created() {
+      axios.get('http://localhost:4000/resume-form')
+        .then(res => {
+          this.professionalSkills = res.data.professionalSkills;
+          this.skills = res.data.skills;
+        })
     },
 
     methods: {

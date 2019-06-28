@@ -84,7 +84,6 @@ let router = new Router({
 //Nav guards
 router.beforeEach((to, from, next) => {
   //Chekc for requiresAuth
-  console.log(firebase.auth().currentUser);
   if(to.matched.some(record => record.meta.requiresAuth)) {
     //Check !loggedIn
     if(!firebase.auth().currentUser) {

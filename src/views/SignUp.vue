@@ -16,21 +16,43 @@
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" v-model="name" placeholder="Enter name">
         </div>
-        <div class="form-group">
+
+        <div class="form-group" :class="{invalid: ($v.email.$error) && ($v.email.$model!='')}">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter email">
+          <input type="email" 
+                  class="form-control" 
+                  id="email" 
+                  @blur="$v.email.$touch()"
+                  v-model="email" 
+                  placeholder="Enter email">
+          <small v-if="($v.email.$error) && ($v.email.$model!='')">Please enter a valid Email address</small>
         </div>
-        <div class="form-group">
+
+        <div class="form-group" :class="{invalid: ($v.password.$error) && ($v.password.$model!='')}">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" v-model="password" placeholder="Password">
+          <input type="password" 
+                  class="form-control" 
+                  id="password" 
+                  @blur="$v.password.$touch()"
+                  v-model="password" 
+                  placeholder="Password">
+          <small v-if="($v.password.$error) && ($v.password.$model!='')">Password must be atleast {{ $v.password.$params.minLen.min }} characters long</small>
         </div>
+        
         <div class="form-group">
           <label for="password">Confirm Password</label>
           <input type="password" class="form-control" id="password" v-model="cpassword" placeholder="Enter same password">
         </div>
-        <div class="form-group">
+        <div class="form-group" :class="{invalid: ($v.contact.$error) && ($v.contact.$model!='')}">
           <label for="number">Contact Number</label>
-          <input type="tel" class="form-control" id="number" v-model="cpassword" placeholder="Number">
+          <input type="tel" 
+                  class="form-control" 
+                  id="number" 
+                  @blur="$v.contact.$touch()"
+                  v-model="contact" 
+                  placeholder="Number">
+          <small v-if="($v.contact.$error) && ($v.contact.$model!='')">Please enter a valid Contact number</small>
+
         </div>
         <div class="form-check my-4">
           <input type="checkbox" class="form-check-input" id="terms">
@@ -46,15 +68,35 @@
 
 <script>
   import firebase from '../firebase';
+  import {required, email, numeric, maxLength, minLength} from 'vuelidate/lib/validators';
 
   export default {
     data() {
       return {
         name: '',
         email: '',
-        password: ''
+        password: '',
+        cpassword: '',
+        contact: null
       }
     },
+    validations: {
+      email: {
+        required,
+        email
+      },
+      contact: {
+        required,
+        numeric,
+        maxLen: maxLength(10),
+        minLen: minLength(10),
+      },
+      password: {
+        required,
+        minLen: minLength(6),
+      },
+    },
+
     methods: {
       register() {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
@@ -70,13 +112,19 @@
   }
 </script>
 
-<style>
+<style scoped>
   .jumbotron {
     padding-top: 1em;
     padding-bottom: 8em;
   }
   form {
     margin-top: 10em;
+  }
+  .invalid small {
+    color: red;
+  }
+  .invalid input {
+    border: 1px solid red;
   }
   .link {
     padding-top: 20px;

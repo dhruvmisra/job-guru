@@ -11,9 +11,15 @@
     </div>
     <div class="card curve">
       <form class="mx-auto col-sm-5">
-        <div class="form-group">
+        <div class="form-group" :class="{invalid: $v.email.$error}">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" id="email" v-model="email" placeholder="Enter email">
+          <input type="email"
+                  class="form-control" 
+                  id="email" 
+                  @blur="$v.email.$touch()"
+                  v-model="email" 
+                  placeholder="Enter email">
+          <small v-if="$v.email.$error">Please enter a valid Email address</small>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
@@ -33,12 +39,19 @@
 
 <script>
   import firebase from '../firebase';
+  import {required, email} from 'vuelidate/lib/validators';
 
   export default {
     data() {
       return {
         email: '',
         password: ''
+      }
+    },
+    validations: {
+      email: {
+        required,
+        email
       }
     },
     methods: {
@@ -63,6 +76,12 @@
   }
   form {
     margin-top: 10em;
+  }
+  .invalid small {
+    color: red;
+  }
+  .invalid input {
+    border: 1px solid red;
   }
   .link {
     padding-top: 20px;
