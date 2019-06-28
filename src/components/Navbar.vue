@@ -14,16 +14,46 @@
         <router-link to="/case-studies" tag="a" class="nav-item nav-link">Case Studies</router-link>
         <router-link to="/about-us" tag="a" class="nav-item nav-link">About Us</router-link>
         <!-- <button class="btn btn-outline-primary mx-2" type="button">Sign Up</button>      -->
-        <router-link to="/signup" tag="button" class="btn btn-outline-primary mx-2">Sign Up</router-link>
+        <router-link to="/signin" v-if="!isLoggedIn" tag="button" class="btn btn-outline-primary mx-2">Sign In</router-link>
+
  
+        <a class="nav-link dropdown-toggle" v-if="isLoggedIn" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ currentUser.email }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <router-link to='/resume' tag="button" class="dropdown-item">My Resume</router-link>
+          <button class="dropdown-item">My Orders</button>
+          <button @click="logout" class="dropdown-item">Logout</button>
+        </div>      
+
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+  import firebase from '../firebase';
+
   export default {
-    
+    data() {
+      return {
+        isLoggedIn: false,
+        currentUser: null
+      }
+    },
+    created() {
+      if(firebase.auth().currentUser) {
+        this.isLoggedIn = true;
+        this.currentUser = firebase.auth().currentUser;
+      }
+    },
+    methods: {
+      logout() {
+        firebase.auth().signOut().then(() => {
+          this.$router.push('/signin');
+        })
+      }
+    }
   }
 </script>
 

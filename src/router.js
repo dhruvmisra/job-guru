@@ -10,9 +10,11 @@ import SignUp from './views/SignUp.vue'
 import SignIn from './views/SignIn.vue'
 import Resume from './views/Resume.vue'
 
+import firebase from './firebase';
+
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -39,27 +41,83 @@ export default new Router({
     {
       path: '/signup',
       name: 'signup',
-      component: SignUp
+      component: SignUp,
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       path: '/signin',
       name: 'signin',
-      component: SignIn
+      component: SignIn,
+      meta: {
+        requiresGuest: true
+      }
     },
     {
       path: '/payment',
       name: 'payment',
-      component: Payment
+      component: Payment,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/resume-form',
       name: 'resume-form',
-      component: ResumeForm
+      component: ResumeForm,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/resume',
       name: 'resume',
-      component: Resume
+      component: Resume,
+      meta: {
+        requiresAuth: true
+      }
     },
   ]
+});
+
+//Nav guards
+router.beforeEach((to, from, next) => {
+  //Chekc for requiresAuth
+  console.log(firebase.auth().currentUser);
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    //Check !loggedIn
+    if(!firebase.auth().currentUser) {
+      //Go to Signin page
+      next({
+        path: '/signin',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      //Proceed
+      next();
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+    //Check loggedIn
+    if(firebase.auth().currentUser) {
+      //Go to Signin page
+      next({
+        path: '/',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      //Proceed
+      next();
+    }
+
+  } else {
+    //Proceed
+    next();
+  }
 })
+
+export default router;
