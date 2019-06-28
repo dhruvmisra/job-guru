@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- Jumbotron -->
-      <div class="jumbotron jumbotron-fluid">
+      <div class="jumbotron main jumbotron-fluid">
 
         <div class="categories container">
           <div class="row justify-content-around">
@@ -107,7 +107,7 @@
         <div class="card curve packages">
           <div class="heading main container text-center">
             <h1 class="">Having talent and still not getting suitable jobs?</h1>
-            <p class="lead">So here is JobGuru for you to get your dream jobs by hand-crafting your resume.</p>
+            <p class="text-muted">So here is JobGuru for you to get your dream jobs by hand-crafting your resume.</p>
             <!-- <a class="btn btn-primary btn-lg mb-5" href="#" role="button">Sign Up</a> -->
             <button @click="buyNow" class="btn btn-primary btn-lg mb-5">Buy Now</button>
           </div>
@@ -221,7 +221,7 @@
 <style>
   @import "../css/styles-landing.css";
   
-  .jumbotron {
+  .jumbotron.main {
     position: relative;
     padding-bottom: 3em;
   }

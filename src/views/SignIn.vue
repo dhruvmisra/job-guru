@@ -14,7 +14,7 @@
         <input type="checkbox" class="form-check-input" id="terms">
         <label class="form-check-label" for="terms">Terms and conditions</label>
       </div>
-      <button @click.prevent="register" type="button" class="btn btn-primary">Sign Up</button>
+      <button @click.prevent="signin" type="button" class="btn btn-primary">Sign In</button>
     </form>
   </div>
 </template>
@@ -30,8 +30,8 @@
       }
     },
     methods: {
-      register() {
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      signin() {
+        firebase.auth().signInWithEmailAndPassword(this.email, this.password)
           .then(user => {
             console.log(user.user);
             this.$router.push('/');

@@ -7,6 +7,7 @@ import AboutUs from './views/AboutUs.vue'
 import Payment from './views/Payment.vue'
 import ResumeForm from './views/ResumeForm.vue'
 import SignUp from './views/SignUp.vue'
+import SignIn from './views/SignIn.vue'
 import Resume from './views/Resume.vue'
 
 Vue.use(Router)
@@ -39,6 +40,11 @@ export default new Router({
       path: '/signup',
       name: 'signup',
       component: SignUp
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: SignIn
     },
     {
       path: '/payment',
