@@ -73,7 +73,10 @@
           </div>
         </div>
 
-        <p>{{ professionalSelected }}</p>
+        <div class="d-block spinner-border mx-auto my-5 text-info" v-if="professionalSkills == null" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+
       </section>
 
       <!-- Education -->
@@ -179,6 +182,11 @@
           </div>
         </div>
 
+        <div class="d-block spinner-border mx-auto my-5 text-info" v-if="skills == null" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+
+
 
         <form class="form-inline my-3" v-for="item in skillSelected" :key="item">
           <div class="form-group col-sm-3">
@@ -237,38 +245,11 @@
     data() {
       return {
         fileSelected: null,
-        professionalSkills: [
-          'Adaptable', 
-          'Attentive to detail',
-          'Collaborative',
-          'Communication',
-          'Creative',
-          'Curious',
-          'Customer service',
-          'Daring',
-          'Decision making',
-          'Empathy',
-          'Leadership',
-          'Multitasking',
-          'Passion',
-          'Positivity',
-          'Presentation',
-          'Problem solving',
-          'Self-motivation',
-          'Teamwork',
-          'Time management',
-          'Work ethic'  
-        ],
+        professionalSkills: null,
         professionalSelected: [],
-        skills: [
-          'C++',
-          'Java',
-          'JavaScript',
-          'HTML',
-          'CSS'
-        ],
+        skills: null,
         skillSelected: [],
-        step: 1,
+        step: 2,
         totalSteps: 6,
         user: {
           firstName: '',
@@ -291,11 +272,13 @@
     },
 
     created() {
-      axios.get('http://localhost:4000/resume-form')
-        .then(res => {
-          this.professionalSkills = res.data.professionalSkills;
-          this.skills = res.data.skills;
-        })
+      setTimeout(() => {
+        axios.get('http://localhost:4000/resume-form')
+          .then(res => {
+            this.professionalSkills = res.data.professionalSkills;
+            this.skills = res.data.skills;
+          });
+      },2000);
     },
 
     methods: {
