@@ -104,9 +104,9 @@
           </div>
         </div>
 
-        <div class="card curve packages">
-          <div class="heading main container text-center">
-            <h1 class="">Having talent and still not getting suitable jobs?</h1>
+        <div class="card-main curve">
+          <div class="container text-center">
+            <h1 class="text-dark">Having talent and still not getting suitable jobs?</h1>
             <p class="text-muted">So here is JobGuru for you to get your dream jobs by hand-crafting your resume.</p>
             <button @click="buyNow" class="btn btn-primary btn-lg mb-5">Buy Now</button>
           </div>
@@ -222,10 +222,10 @@
   
   .jumbotron.main {
     position: relative;
-    padding-bottom: 3em;
+    padding-bottom: 0;
   }
   .categories {
-    padding-bottom: 100px;
+    padding-bottom: 10em;
   }
   .category {
     width: 320px;
@@ -297,8 +297,11 @@
     color: black;
     bottom: -20em;
   }
-  .heading.main {
-    margin-top: 8em;
+
+  .card-main {
+    background-color: white;
+    padding-top: 9em;
+    padding-bottom: 0;
   }
 
 </style>

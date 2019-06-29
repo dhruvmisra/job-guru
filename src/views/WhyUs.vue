@@ -56,7 +56,7 @@
       <div class="row justify-content-center pt-5">
         <div class="col-md-5">
             <div class="heading">
-              <h2><span>Get applied</span> <br>in companies</h2>
+              <h1><span>Get applied</span> <br>in companies</h1>
               <p class="text-muted text-sm">We will do the tough part for you.</p>
             </div>
             <ul class="points">
