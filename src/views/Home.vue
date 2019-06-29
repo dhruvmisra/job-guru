@@ -100,7 +100,6 @@
               </div>
             </div>
 
-
           </div>
         </div>
 
@@ -204,12 +203,16 @@
   export default {
     methods: {
       buyNow() {  
-        axios.get('http://localhost:4000/paywithpaytm?amount=1')
+        let order = {
+          ORDER_ID: 'ABC134',
+          CUST_ID: 'testUser1',
+          TXN_AMOUNT: '1',
+        }
+        axios.post('http://localhost:3000/testtxn', order)
           .then(res => {
-            document.write(res.data);
-          })
-          .then(res => {
-            console.log(res); 
+            console.log(res);
+            let pay = window.open("", "_blank");
+            pay.document.write(res.data);
           })
       }
 
