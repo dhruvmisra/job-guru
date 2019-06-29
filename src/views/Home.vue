@@ -4,7 +4,7 @@
       <div class="jumbotron main jumbotron-fluid">
 
         <div class="categories container">
-          <div class="row justify-content-around">
+          <div class="row mx-auto justify-content-around">
 
             <div class="card category bg-primary">
               <h1 class="card-title">Student</h1>
@@ -108,7 +108,7 @@
           <div class="heading main container text-center">
             <h1 class="">Having talent and still not getting suitable jobs?</h1>
             <p class="text-muted">So here is JobGuru for you to get your dream jobs by hand-crafting your resume.</p>
-            <button @click="" class="btn btn-primary btn-lg mb-5">Resgister</button>
+            <button @click="buyNow" class="btn btn-primary btn-lg mb-5">Buy Now</button>
           </div>
         </div>
 

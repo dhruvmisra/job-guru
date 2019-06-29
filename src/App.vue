@@ -40,7 +40,7 @@
 </script>
 
 
-<style scoped>
+<style>
   @import "./css/bootstrap.min.css";
   @import "./css/bootstrap-custom.css";
   /* @import "https://unpkg.com/aos@next/dist/aos.css"; */

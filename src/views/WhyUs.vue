@@ -10,49 +10,20 @@
       </div>
     </div>
 
-    <!-- Serivices -->
+    <!-- Info -->
     <div class="card curve services">
-
-      <div class="row justify-content-center">
-        <div class="card service">
-          <div class="card-body text-muted">
-            <img src="../assets/service_resume.png" alt="resume" class="service-img mx-auto">
-            <h4 class="text-center py-2">Resume Building</h4>
-            <div class="service-info">
-              <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-              <button class="d-flex mx-auto btn btn-primary btn-center">Learn More</button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card service">
-          <div class="card-body text-muted">
-            <img src="../assets/service_pd.png" alt="resume" class="service-img mx-auto">
-            <h4 class="text-center py-2">Personality Development</h4>
-            <p class="text-center">We will provide a Personality Development training course to help you stand out from the crowd</p>
-            <button class="d-flex mx-auto btn btn-primary btn-center">Learn More</button>
-          </div>
-        </div>
-
-        <div class="card service">
-          <div class="card-body text-muted">
-            <img src="../assets/service_job.png" alt="resume" class="service-img mx-auto">
-            <h4 class="text-center py-2">Specialised Support</h4>
-            <div class="service-info">
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                <button class="d-flex mx-auto btn btn-primary btn-center">Learn More</button>
-              </div>
-            </div>
-        </div>
-
+      <div class="info card-body text-center">
+        <p class="col-lg-6 mx-auto">According to a survey 80% of people in India aren’t aware about their job profiles and where to apply for correct job.</p>
+        <img src="../assets/team.jpg" alt="" class="my-4" style="width: 500px;">
+        <p class="col-lg-6 mx-auto">We at JobGuru help in solving this problem by building the perfect resume according to your knowledge/skills and 
+        then our team of experts hunt for the jobs according to your preference and apply in the best companies.</p>
       </div>
-    
     </div>
 
     <!-- Resume section -->
     <div class="card resume curve">
-        <p class="fact col-md-6 mx-auto text-center text-muted">According to a study/research, it is found that over 
-          65% of the candidates don’t get an interview call because of how their resume is built.</p>
+        <!-- <p class="fact col-md-6 mx-auto text-center text-muted">According to a study/research, it is found that over 
+          65% of the candidates don’t get an interview call because of how their resume is built.</p> -->
           
       <div class="row justify-content-center pt-5">
         <div class="col-md-4 resume-img">
@@ -61,48 +32,36 @@
 
         <div class="col-md-5">
             <div class="heading">
-              <h2><span>The service</span> <br>we provide to create a resume</h2>
-              <p class="text-muted text-sm">We will create a professional looking resume for you 
-                mentioning all the relevant information</p>
+              <h1><span>Building</span> <br>your resume</h1>
+              <p class="text-muted text-sm">We create a professional looking resume just from the basic information 
+                you provide to us.</p>
             </div>
             <ul class="points">
-              <li>
-                <p>
-                  Build a professional resume <br>
-                  <span class="text-muted text-sm"></span>
-                </p>
-              </li>
-              <li>
-                  <p>
-                    Guidance for future resume building <br>
-                    <span class="text-muted text-sm">Guidance for future resume building</span>
-                  </p>
-      
-              </li>
+              <li>Fill the form to share us your basic information.</li>
+              <li>Sit back and relax, our team will build the resume for you and email you within 24 hrs.</li>
             </ul>
 
-            <button class="btn template-btn mt-5">View a template</button>
+            <p class="text-muted mt-5">Your future resume:</p>
+            <button class="btn btn-info">View a template</button>
         </div>
       </div>
     </div>
 
     <!-- PD section -->
     <div class="card pd curve">
-      <p class="fact col-md-6 mx-auto text-center text-muted">Over 70% of the candidates are rejected 
+      <!-- <p class="fact col-md-6 mx-auto text-center text-muted">Over 70% of the candidates are rejected 
         within the initial five seconds of the interview because they lack the right attitude and 
-        personality to impress the recruiter/interviewee.</p>
+        personality to impress the recruiter/interviewee.</p> -->
       
       <div class="row justify-content-center pt-5">
         <div class="col-md-5">
             <div class="heading">
-              <h2><span>Personality Development </span> <br>course to shape your future</h2>
-              <p class="text-muted text-sm">We give you the best personality development course
-                which will help you get closer to your dream job.</p>
+              <h2><span>Get applied</span> <br>in companies</h2>
+              <p class="text-muted text-sm">We will do the tough part for you.</p>
             </div>
             <ul class="points">
-              <li>Unnecessary information</li>
-              <li>Some more unnecessary information</li>
-              <li>Making no sense whatsoever</li>
+              <li>Our network of 10,000+ companies helps us in choosing the best fit job for you according to your profile.</li>
+              <li>Our team will be sending your resumes to the companies and will inform you as soon as you are being called for interview.</li>
             </ul>
 
         </div>
@@ -127,44 +86,19 @@
 </script>
 
 <style scoped>
-.jumbotron {
-  padding-bottom: 15em;
+
+.curve > .row {
+  margin-top: 8em;
 }
+
 .curve:nth-child(odd) {
     background-color: var(--light);
 }
 
-/* Services */
-.services {
-    margin-top: -15em;
-    /* background-color: rgb(255, 255, 255); */
-}
-.services > .row {
-    margin-top: 10em;
-}
-.service.card {
-    position: relative;
-    font-size: 0.9em;
-    margin: 30px;
-    width: 300px;
-    border: none;
-    transition: box-shadow 0.2s ease-out;
-}
-.service.card:hover {
-    box-shadow: 2px 2px 8px rgb(226, 226, 226);
-}
-.service-img {
-    display: block;
-    width: 80px;
-    height: 80px;
-    /* filter: drop-shadow(1px 1px 1px rgb(194, 194, 194)) */
-}
-.service-info {
-    position: absolute;
-    bottom: 20px;
-}
-.service > .card-body > h4 {
-    font-size: 1.5em;
+/* Info */
+.info {
+  font-size: 1.2em;
+  padding-top: 8em;
 }
 
 /* Resume */
@@ -184,6 +118,18 @@
     z-index: -1;
     animation: fade-in-up 0.6s ease-out forwards;
 }
+.points {
+    font-size: 1.1em;
+    padding: 10px 0;
+    padding-left: 1em;
+    list-style-type: square;
+}
+
+.points > li {
+  margin-top: 10px;
+}
+
+
 @keyframes fade-in-up {
     0% {
         opacity: 0;
