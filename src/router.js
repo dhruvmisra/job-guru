@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import WhyUs from './views/WhyUs.vue'
 import CaseStudies from './views/CaseStudies.vue'
 import AboutUs from './views/AboutUs.vue'
-import Payment from './views/Payment.vue'
+import Plans from './views/Plans.vue'
 import ResumeForm from './views/ResumeForm.vue'
 import SignUp from './views/SignUp.vue'
 import SignIn from './views/SignIn.vue'
@@ -55,9 +55,9 @@ let router = new Router({
       }
     },
     {
-      path: '/payment',
-      name: 'payment',
-      component: Payment,
+      path: '/plans',
+      name: 'plans',
+      component: Plans,
       meta: {
         requiresAuth: true
       }

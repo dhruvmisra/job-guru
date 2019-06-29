@@ -303,7 +303,7 @@
 
   .card-main {
     background-color: white;
-    padding-top: 9em;
+    padding-top: 10em;
     padding-bottom: 0;
   }
 

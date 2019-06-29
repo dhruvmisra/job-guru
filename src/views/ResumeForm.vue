@@ -273,7 +273,7 @@
 
     created() {
       setTimeout(() => {
-        axios.get('http://localhost:4000/resume-form')
+        axios.get('http://localhost:3000/resume-form')
           .then(res => {
             this.professionalSkills = res.data.professionalSkills;
             this.skills = res.data.skills;

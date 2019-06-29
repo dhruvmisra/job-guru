@@ -4,7 +4,7 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="jumbo-text container">
         <div class="heading text-center">
-          <h2><span>What we can</span> <br> do for you</h2>
+          <h1><span>What we can</span> <br> do for you</h1>
           <p class="text-muted text-sm">The services we provide are unparalleled</p>
         </div>
       </div>
