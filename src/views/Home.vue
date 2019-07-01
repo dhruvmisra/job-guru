@@ -18,11 +18,11 @@
             <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModal" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalCenterTitle">Looking for an internship?</h4>
+                  <div class="modal-header my-4 mx-4">
+                    <h4 class="modal-title text-center" id="exampleModalCenterTitle">Looking for an internship?</h4>
                   </div>
 
-                  <div class="modal-body">
+                  <div class="modal-body my-4">
                     <ul>
                       <li>Some very convincing stuff</li>
                       <li>How can you say no after this point?</li>
@@ -288,11 +288,11 @@
   }
 
   .modal-content {
-    background: linear-gradient(45deg, var(--dark) 0%, #005091 100%);
+    background: linear-gradient(45deg, #005091 30%, #2EC4B6 100%);
     border: none;
   }
   .modal-body > ul {
-    list-style-type: none;
+    list-style-type: square;
   }
 
   .packages {
