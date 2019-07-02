@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-navbar></app-navbar>
+    <app-navbar :key="$route.fullPath"></app-navbar>
     <router-view/>
   </div>
 </template>

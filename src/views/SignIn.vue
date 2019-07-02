@@ -23,13 +23,20 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" v-model="password" placeholder="Password">
+          <input type="password" 
+                  class="form-control" 
+                  id="password" 
+                  v-on:keyup.enter="signin"
+                  v-model="password" 
+                  placeholder="Password">
         </div>
-        <div class="form-check my-4">
-          <input type="checkbox" class="form-check-input" id="terms">
-          <label class="form-check-label" for="terms">Terms and conditions</label>
-        </div>
-        <button @click.prevent="signin" type="button" class="btn btn-primary">Sign In</button>
+        <button @click.prevent="signin" type="button" class="btn btn-primary">
+          <div class="spinner-border mx-2 my-0" v-if="loading" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <span v-else>Sign In</span>
+        </button>
+
       </form>
       
       <router-link to="/signup" tag="a" class="link mx-auto">Create a new account</router-link>
@@ -45,7 +52,8 @@
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        loading: false
       }
     },
     validations: {
@@ -56,14 +64,17 @@
     },
     methods: {
       signin() {
+        this.loading = true;
         firebase.auth().signInWithEmailAndPassword(this.email, this.password)
           .then(user => {
             console.log(user.user);
-            this.$router.go({path: this.$router.path});
+            //this.$router.go({path: this.$router.path});
+            this.$router.push('/plans');
+            this.loading = false;
           },
           err => {
             alert(err.message);
-          })
+          });
       }
     }
   }

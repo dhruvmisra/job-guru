@@ -13,10 +13,6 @@
     <!-- Studies -->
     <div class="card study curve">
       <div class="row justify-content-center pt-5">
-
-        <div class="col-md-3">
-          <img src="" alt="study-img" class="study-img border">
-        </div>
       
         <div class="col-md-5">
           <h4 class="study-name">Brij Mohan, <span>B.A. Student, Delhi University</span></h4>
@@ -35,10 +31,6 @@
 
     <div class="card study curve">
       <div class="row justify-content-center pt-5">
-
-        <div class="col-md-3">
-          <img src="" alt="study-img" class="study-img border">
-        </div>
       
         <div class="col-md-5">
           <h4 class="study-name">Alka Nath, <span>Entrepreneur/Single mother</span></h4>
@@ -54,10 +46,6 @@
 
     <div class="card study curve">
       <div class="row justify-content-center pt-5">
-
-        <div class="col-md-3">
-          <img src="" alt="study-img" class="study-img border">
-        </div>
       
         <div class="col-md-5">
           <h4 class="study-name">Shantanu Saket, <span>General Manager, Modern Paper Company</span></h4>
@@ -78,10 +66,6 @@
     <div class="card study curve">
       <div class="row justify-content-center pt-5">
 
-        <div class="col-md-3">
-          <img src="" alt="study-img" class="study-img border">
-        </div>
-      
         <div class="col-md-5">
           <h4 class="study-name">Rafiq Qureshi, <span>QA Analyst, TCS</span></h4>
           <p class="study-text">I joined the personality development course by Pushkar Raj Thakur six months back. 

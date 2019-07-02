@@ -69,7 +69,12 @@
           <br>
           <small v-if="!terms" style="color: red">Please accept terms and conditions</small>
         </div>
-        <button @click.prevent="register" :disabled="$v.$invalid" type="submit" class="btn btn-primary mx-auto">Sign Up</button>
+        <button @click.prevent="register" :disabled="$v.$invalid" type="submit" class="btn btn-primary mx-auto">
+          <div class="spinner-border mx-2 my-0" v-if="loading" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <span v-else>Sign Up</span>
+        </button>
       </form>
       
       <router-link to="/signin" tag="a" class="link mx-auto">Already have an account?</router-link>
@@ -89,7 +94,8 @@
         password: '',
         confirmPass: '',
         contact: null,
-        terms: false
+        terms: false,
+        loading: false
       }
     },
     validations: {
@@ -114,10 +120,13 @@
 
     methods: {
       register() {
+        this.loading = true;
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
           .then(user => {
             console.log(user.user);
-            this.$router.go({path: this.$router.path});
+            //this.$router.go({path: this.$router.path});
+            this.$router.push('/plans');
+            this.loading = false;
           },
           err => {
             alert(err.message);

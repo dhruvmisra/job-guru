@@ -16,7 +16,7 @@
 
         <div class="about-img-section main row justify-content-center container mx-auto">
           <div class="about-img main">
-            <img src="" alt="about-img" class="">
+            <img src="../assets/prt.jpg" alt="about-img" class="">
           </div>
         
           <div class="col-md-6">
@@ -88,9 +88,10 @@
   }
   .about-img {
       width: 280px;
-      height: 340px;
+      height: 480px;
       background-color: rgb(224, 246, 255)
   }
+
   .about-text, .about-name {
       padding-left: 20px;
   }
@@ -109,7 +110,13 @@
   .about-img.main {
       display: block;
       width: 400px;
-      height: 450px;
+      height: 475px;
+      background-color: rgb(224, 246, 255)
+  }
+  .about-img > img {
+      width: 100%;
+      height: 100%;
+      box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.25);
   }
   .about-name.main {
       color: white;
