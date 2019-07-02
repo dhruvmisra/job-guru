@@ -1,9 +1,16 @@
 <template>
   <div>
       <!-- Jumbotron -->
-      <div class="jumbotron main jumbotron-fluid">
+      <div class="jumbotron main default jumbotron-fluid">
 
-        <div class="categories container">
+        <div class="loggedIn-section" v-if="isLoggedIn">
+          <div class="row mx-auto justify-content-center">
+            <router-link to="/resume-form" tag="button" class="btn btn-primary">Create your resume</router-link>
+            <router-link to="/resume" tag="button" class="btn btn-info">View your resume</router-link>
+          </div>
+        </div>
+
+        <div class="categories container" v-else>
           <div class="row mx-auto justify-content-around">
 
             <div class="card category bg-primary">
@@ -31,7 +38,7 @@
                   </div>
                   <div class="modal-footer mx-auto">
                     <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary">Register Now</button>
+                    <a href="/signup" class="btn btn-primary">Register now</a>
                   </div>
                 </div>
               </div>
@@ -62,7 +69,7 @@
                   </div>
                   <div class="modal-footer mx-auto">
                     <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary">Register Now</button>
+                    <a href="/signup" class="btn btn-primary">Register now</a>
                   </div>
                 </div>
               </div>
@@ -94,7 +101,7 @@
                   </div>
                   <div class="modal-footer mx-auto">
                     <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-primary">Register Now</button>
+                    <a href="/signup" class="btn btn-primary">Register now</a>
                   </div>
                 </div>
               </div>
@@ -199,8 +206,14 @@
 
 <script>
   import axios from 'axios';
+  import firebase from '../firebase';
 
   export default {
+    data() {
+      return {
+        isLoggedIn: false
+      }
+    },
     methods: {
       buyNow() {  
         let order = {
@@ -216,6 +229,15 @@
           })
       }
 
+    },
+    mounted() {
+      if(firebase.auth().currentUser) {
+        this.isLoggedIn = true;
+        let jumbo = document.getElementsByClassName('jumbotron', 'main');
+        jumbo = jumbo[0];
+        jumbo.classList.remove('default');
+        jumbo.classList.add('loggedIn');
+      }
     }
   }
 </script>
@@ -226,9 +248,27 @@
   .jumbotron.main {
     position: relative;
     padding-bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .default {
+    background: linear-gradient(0deg, rgba(1, 22, 39, 0.5), rgba(1, 22, 39, 1)), url('../assets/default.jpg');
+  }
+  .loggedIn {
+    background: linear-gradient(0deg, rgba(1, 22, 39, 0.5), rgba(1, 22, 39, 1)), url('../assets/loggedIn.jpg');
   }
   .categories {
     padding-bottom: 10em;
+  }
+  .loggedIn-section {
+    padding-bottom: 12em
+  }
+  .loggedIn-section > .row > button {
+    font-size: 1.5em;
+    padding: 1.5em 3em;
+    margin: 2em;
+    box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.25);
   }
   .category {
     width: 320px;

@@ -249,7 +249,7 @@
         professionalSelected: [],
         skills: null,
         skillSelected: [],
-        step: 2,
+        step: 1,
         totalSteps: 6,
         user: {
           firstName: '',
